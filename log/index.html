@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>만든 사람과 작업 기록 — ZunaTtang</title>
+  <meta name="description" content="운명재판소, 스팀 동접 버블맵, Zuna Facecap을 어떻게 만들었는지 커밋 242개로 정리했어요. 혼자, Claude Code와 짝을 이뤄 만듭니다.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#141110">
+  <link rel="canonical" href="https://zunattang.github.io/log/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="ZunaTtang">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:title" content="만든 사람과 작업 기록 — ZunaTtang">
+  <meta property="og:description" content="세 프로젝트, 커밋 242개로 보는 만드는 방식.">
+  <meta property="og:url" content="https://zunattang.github.io/log/">
+  <link rel="icon" type="image/png" sizes="32x32" href="../zuna-facecap-releases/assets/favicon-32.png">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"AboutPage","name":"만든 사람과 작업 기록","url":"https://zunattang.github.io/log/","inLanguage":"ko","about":{"@type":"Organization","name":"ZunaTtang","url":"https://zunattang.github.io/"},"mentions":[{"@type":"MobileApplication","name":"운명재판소","url":"https://zunattang.github.io/games/"},{"@type":"WebApplication","name":"스팀 동접 버블맵","url":"https://steambubbles.vercel.app/"},{"@type":"MobileApplication","name":"Zuna Facecap","url":"https://zunattang.github.io/zuna-facecap-releases/"}]}</script>
+  <style>
+    :root {
+      --ink: #141110; --panel: #1f1a17; --line: rgba(240, 230, 214, .12);
+      --text: #f2e8da; --dim: #b3a595; --facecap: #e58a5c; --games: #c9a24b; --steam: #7fa7d9; --folio: #8fb8a4;
+      color-scheme: dark;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    ::selection { background: var(--facecap); color: var(--ink); }
+    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    body {
+      margin: 0; background: var(--ink); color: var(--text);
+      font-family: system-ui, -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif;
+      font-size: 17px; line-height: 1.7; word-break: keep-all;
+    }
+    a { color: var(--text); text-underline-offset: 3px; }
+    a:focus-visible { outline: 3px solid var(--facecap); outline-offset: 3px; border-radius: 6px; }
+    .wrap { max-width: 760px; margin: 0 auto; padding: 0 16px; }
+    .back { display: inline-flex; align-items: center; gap: 6px; margin: 32px 0 0; color: var(--dim); text-decoration: none; font-size: 15px; }
+    .back:hover { color: var(--text); }
+    .back svg { width: 16px; height: 16px; }
+    h1 { font-size: clamp(36px, 8vw, 60px); line-height: 1.1; letter-spacing: -0.03em; margin: 40px 0 16px; }
+    .lead { color: var(--dim); font-size: 19px; margin: 0 0 12px; max-width: 34em; }
+    .counts { color: var(--dim); font-size: 15px; margin: 0 0 56px; }
+    .counts b { color: var(--text); font-variant-numeric: tabular-nums; }
+    h2 { font-size: clamp(26px, 5vw, 34px); line-height: 1.2; letter-spacing: -0.02em; margin: 0 0 20px; }
+    section { padding: 48px 0; border-top: 1px solid var(--line); }
+    .ways { list-style: none; margin: 0; padding: 0; display: grid; gap: 22px; counter-reset: way; }
+    .ways li { counter-increment: way; display: grid; grid-template-columns: 2.2em minmax(0, 1fr); column-gap: 8px; }
+    .ways li::before { content: counter(way); grid-row: 1 / span 2; color: var(--facecap); font-weight: 800; font-size: 20px; font-variant-numeric: tabular-nums; line-height: 1.4; }
+    .ways b { font-size: 18px; }
+    .ways p { margin: 2px 0 0; color: var(--dim); }
+    .tag { display: inline-block; font-size: 13px; font-weight: 700; padding: 0 8px; border-radius: 999px; margin-right: 4px; color: var(--ink); line-height: 1.7; vertical-align: 1px; }
+    .tag.games { background: var(--games); } .tag.steam { background: var(--steam); } .tag.facecap { background: var(--facecap); }
+    .project { --accent: var(--dim); }
+    .project.games { --accent: var(--games); } .project.steam { --accent: var(--steam); } .project.facecap { --accent: var(--facecap); }
+    .project h2 a { color: var(--text); text-decoration: none; }
+    .project h2 a:hover { color: var(--accent); }
+    .meta { margin: -8px 0 8px; color: var(--accent); font-weight: 700; font-size: 15px; font-variant-numeric: tabular-nums; }
+    .stack { margin: 0 0 28px; color: var(--dim); font-size: 15px; }
+    .timeline { list-style: none; margin: 0; padding: 0 0 0 20px; border-left: 2px solid var(--line); }
+    .timeline li { position: relative; padding: 0 0 22px 4px; }
+    .timeline li::before { content: ""; position: absolute; left: -27px; top: 9px; width: 12px; height: 12px; border-radius: 50%; background: var(--ink); border: 2px solid var(--accent); }
+    .timeline li:last-child { padding-bottom: 0; }
+    .when { display: block; color: var(--accent); font-weight: 700; font-size: 14px; font-variant-numeric: tabular-nums; }
+    .timeline p { margin: 2px 0 0; color: #e0d4c6; }
+    .note { margin: 24px 0 0; color: var(--dim); font-size: 15px; }
+    footer { border-top: 1px solid var(--line); padding: 40px 0 56px; color: var(--dim); font-size: 15px; }
+    .recruit { margin: 0 0 14px; color: var(--text); font-size: 17px; }
+    .recruit a { color: var(--folio); font-weight: 700; }
+    footer .small { font-size: 14px; }
+    footer .small a { color: var(--dim); }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M11 6l-6 6 6 6"/></svg>ZunaTtang</a>
+  <main>
+    <h1>만든 사람과 작업 기록</h1>
+    <p class="lead">혼자 기획하고, 만들고, 출시하고, 운영해요. 코드는 Claude Code와 짝을 이뤄 씁니다. 아래는 세 프로젝트의 커밋 기록을 그대로 따라가며 정리한 거예요.</p>
+    <p class="counts">커밋 <b>242</b>개 · 그중 <b>239</b>개가 Claude Code와 함께 쓴 커밋 · 2026년 6월~11월</p>
+
+    <section aria-labelledby="ways-h">
+      <h2 id="ways-h">이렇게 만들어요</h2>
+      <ol class="ways">
+        <li><b>단계로 쪼개고, README를 로드맵으로 씁니다</b><p>Phase 1, 2, 3…로 나눠 하나씩 끝내고, 끝날 때마다 README의 진행표를 고쳐요. 다음에 할 일이 언제나 문서에 있어요. <span class="tag games">운명재판소</span><span class="tag steam">버블맵</span><span class="tag facecap">Facecap</span></p></li>
+        <li><b>비용을 설계에 넣습니다</b><p>같은 답은 캐시하고 판결을 미리 쌓아 두는 "0원 계층", 판독 불가 입력은 AI 대신 템플릿, 무료 한도를 넘으면 오류 대신 빈 결과. 돈이 새는 길을 먼저 막아요. <span class="tag games">운명재판소</span><span class="tag steam">버블맵</span></p></li>
+        <li><b>앱을 다시 올리지 않고 고칩니다</b><p>콘텐츠는 DB에, 설정은 원격 다이얼에, 화면 수정은 OTA로. 스토어 심사를 기다리지 않고 하루에 여러 번 고쳐요. <span class="tag games">운명재판소</span><span class="tag steam">버블맵</span></p></li>
+        <li><b>실제 기기와 실제 사용으로 확인합니다</b><p>갤럭시 S24에서 직접 켜 보고, 방송에 실제로 써 보고, 태블릿 스크린샷도 실제 태블릿으로 찍어요. 쓰다가 나온 버그가 다음 커밋이 돼요. <span class="tag facecap">Facecap</span><span class="tag games">운명재판소</span></p></li>
+        <li><b>반복되는 일은 자동으로 돌립니다</b><p>명령 하나로 빌드·서명·Play 업로드, 사람 손 없이 계속 도는 3,000개 게임 수집, 언어별 사이트 생성기. <span class="tag facecap">Facecap</span><span class="tag steam">버블맵</span></p></li>
+        <li><b>결정은 기록에 남깁니다</b><p>"사용자 결정"으로 정한 것, 하지 않기로 한 것, 그 이유를 커밋과 문서에 적어요. 나중에 같은 고민을 다시 하지 않게요. <span class="tag steam">버블맵</span><span class="tag facecap">Facecap</span></p></li>
+      </ol>
+    </section>
+
+    <section class="project games" aria-labelledby="games-h">
+      <h2 id="games-h"><a href="../games/">운명재판소</a></h2>
+      <p class="meta">2026.06.10 – 09.04 · 커밋 80개 · Google Play 출시</p>
+      <p class="stack">React Native·Expo · TypeScript · Supabase Edge Functions·PostgreSQL · Gemini · EAS Build·OTA · AdMob</p>
+      <ol class="timeline">
+        <li><span class="when">6월 10일</span><p>하루에 뼈대를 세웠어요. Expo 앱 이식, Gemini 판관을 부르는 판결 서버, 사건을 DB로 옮겨 배포 없이 갱신, 같은 답 캐시와 판결 은행(0원 계층), 익명 로그인과 서버가 관리하는 토큰, 광고 3종, 원격 설정과 손익 관측.</p></li>
+        <li><span class="when">6월 12–15일</span><p>판관 무작위 배정과 재심, 첫 10분 무료, 공유 계측. 7개 분야 사건 700건을 채우고, 8초 타임아웃과 부하 테스트로 버티게 했어요. 판결문 공유 카드와 AI 그림 만들기 연결(우리 비용 0원).</p></li>
+        <li><span class="when">6월 16일</span><p>스토어 그래픽·스크린샷·개인정보처리방침. 테스트하며 나온 키보드 가림, 버튼 쏠림을 OTA로 하루에 여섯 번 고쳤고, 결제는 숨기고 광고만으로 가기로 했어요.</p></li>
+        <li><span class="when">6월 23일</span><p>채점을 공정하게. 그럴듯하고 기발한 답은 더 살리고, 하지도 않은 행동을 지어내 죽이지 않게. 애매한 사건을 솎고 판결 기록 화면을 더했어요.</p></li>
+        <li><span class="when">7월 – 8월</span><p>출시 전 정리, Play 권장 조치, 빌드 버전 고정. 정식 출시와 광고 승인.</p></li>
+        <li><span class="when">9월 3–4일</span><p>광고 진단 계측, 채점 다시 손보기, 664개 사건의 물품을 전부 새로 만들기, 무료 충전으로 바꾸는 원격 스위치.</p></li>
+      </ol>
+    </section>
+
+    <section class="project steam" aria-labelledby="steam-h">
+      <h2 id="steam-h"><a href="https://steambubbles.vercel.app/ko" rel="noopener">스팀 동접 버블맵</a></h2>
+      <p class="meta">2026.07.14 – 10.28 · 커밋 50개 · 한국어·영어</p>
+      <p class="stack">Next.js 15 · next-intl · Drizzle·Neon PostgreSQL · Vercel · QStash</p>
+      <ol class="timeline">
+        <li><span class="when">7월 14–15일</span><p>이틀 만에 라이브. 스팀 동접을 사람 손 없이 모으는 수집기(Neon·Vercel·QStash 연결 확인), 상세 페이지와 SEO(사이트맵·구조화 데이터), 2단계 수집, 영어판 오픈.</p></li>
+        <li><span class="when">7월 17일</span><p>버블맵을 3,000위까지 넓히고, 3단계 수집을 2단계가 스스로 깨우게 해 스케줄 하나를 줄였어요. 모바일 길게 눌러 끌기, 버블 뽑기.</p></li>
+        <li><span class="when">7월 22–23일</span><p>버블맵을 브랜드 카드 이미지로 공유, 동적 OG 이미지, 상세 페이지를 데이터 대시보드로, 진입 모션 다듬기. 오류가 나도 무너지지 않는지 확인하고 출시 범위를 마쳤어요.</p></li>
+        <li><span class="when">7월 23–24일</span><p>순위 범위 직접 입력, 검색 개선, 볼 때마다 그 게임 정보를 새로 고치기, 오늘의 떡상·떡락과 이유 태그, 로고와 사이트 이름.</p></li>
+        <li><span class="when">10월 28일</span><p>DB 무료 한도를 넘어 500 오류가 나자, 읽기에 실패해도 빈 결과로 버티게 고쳤어요.</p></li>
+      </ol>
+    </section>
+
+    <section class="project facecap" aria-labelledby="facecap-h">
+      <h2 id="facecap-h"><a href="../zuna-facecap-releases/ko/">Zuna Facecap</a></h2>
+      <p class="meta">2026.11.06 – 11.19 · 커밋 112개 · Play 내부 테스트 중</p>
+      <p class="stack">Kotlin·Jetpack Compose·CameraX·MediaPipe · Unity 6 URP · Spout2·OBS · Python · iFacialMocap·VMC</p>
+      <ol class="timeline">
+        <li><span class="when">11월 6–8일</span><p>계획과 폰 검증 앱에서 시작해, 폰이 Unity 속 아바타의 얼굴을 움직이고 OBS로 내보내기까지. 무표정 보정, 표정 단축키, 마이크 립싱크, 흔들림, 카메라 프리셋.</p></li>
+        <li><span class="when">11월 9일</span><p>같은 폰 카메라로 몸과 손 추적.</p></li>
+        <li><span class="when">11월 11–12일</span><p>폰에서 보정하고 PC를 자동으로 찾기, 앱 안 업데이트와 명령 하나 릴리스. 폰을 방송 덱으로(OBS 장면·배경음악), 다른 캐릭터용 표정 자동 매핑. 실제 방송에 써 보고 고쳤어요.</p></li>
+        <li><span class="when">11월 13일</span><p>나 말고 다른 사람이 쓸 화면으로 다시 만들기, 시바견 2D 캐릭터. 보안 점검 뒤 폰↔PC 서명 연결과 덱 기기 허용, Play 업로드 자동화와 첫 자동 업로드.</p></li>
+        <li><span class="when">11월 14–16일</span><p>PC 프로그램 안에 덱 넣기, 소품·옷장·던지기·캐릭터 바꾸기. 후면 카메라, 고개 각도 보정, 음성 안내.</p></li>
+        <li><span class="when">11월 16–19일</span><p>iFacialMocap 방식으로 Warudo·VSeeFace·VNyan을 지원하기로 결정하고 구현. 튐 막기, 영·한·일·중 화면, 4개 언어 사용 가이드, 소개 사이트 공개.</p></li>
+      </ol>
+      <p class="note">2주 동안 커밋 112개. 폰 앱은 0.2에서 0.9.9까지 올라갔어요.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p class="recruit">같이 만들 팀원을 찾고 있어요. 경력과 연락처는 <a href="https://zuna.is-a.dev/">zuna.is-a.dev</a>에서 볼 수 있어요.</p>
+    <p class="small"><a href="https://github.com/ZunaTtang" rel="noopener">GitHub</a> · © 2026 ZunaTtang</p>
+  </footer>
+</div>
+</body>
+</html>
