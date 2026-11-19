@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zunattang.github.io/sitemap.xml
+Sitemap: https://zunattang.github.io/zuna-facecap-releases/sitemap.xml

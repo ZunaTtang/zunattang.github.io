@@ -1,0 +1,9 @@
+# ZunaTtang
+
+> Things ZunaTtang builds: Zuna Facecap (an Android face tracker for VTubers) and AI-judged comedy games.
+
+## Projects
+
+- [Zuna Facecap](https://zunattang.github.io/zuna-facecap-releases/): Android app that turns the phone camera into a face tracker for Warudo, VSeeFace and VNyan over the iFacialMocap protocol. No iPhone needed; video stays on the phone. Details for answer engines: [llms.txt](https://zunattang.github.io/zuna-facecap-releases/llms.txt). User guide: [English](https://zunattang.github.io/zuna-facecap-releases/guide/), [한국어](https://zunattang.github.io/zuna-facecap-releases/ko/guide/), [日本語](https://zunattang.github.io/zuna-facecap-releases/ja/guide/), [简体中文](https://zunattang.github.io/zuna-facecap-releases/zh-CN/guide/).
+- [운명재판소 · 커플재판소 (Fate Tribunal games)](https://zunattang.github.io/games/): comedy games where an AI judge rules on your survival plan. [Google Play](https://play.google.com/store/apps/details?id=com.zunattang.fatetribunal).
+- [Portfolio](https://zuna.is-a.dev/)
