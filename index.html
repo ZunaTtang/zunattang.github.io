@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ZunaTtang — Zuna Facecap · 운명재판소 · 포트폴리오</title>
-  <meta name="description" content="ZunaTtang이 만드는 것들: 안드로이드 얼굴 트래커 Zuna Facecap, AI 판결 코미디 게임 운명재판소, 포트폴리오.">
+  <title>ZunaTtang — Zuna Facecap · 운명재판소 · 스팀 버블맵</title>
+  <meta name="description" content="ZunaTtang이 만드는 것들: 안드로이드 얼굴 트래커 Zuna Facecap, AI 판결 코미디 게임 운명재판소, 스팀 동접 버블맵, 포트폴리오.">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#141110">
   <link rel="canonical" href="https://zunattang.github.io/">
@@ -12,11 +12,11 @@
   <meta property="og:site_name" content="ZunaTtang">
   <meta property="og:locale" content="ko_KR">
   <meta property="og:title" content="ZunaTtang">
-  <meta property="og:description" content="Zuna Facecap · 운명재판소 · 포트폴리오">
+  <meta property="og:description" content="Zuna Facecap · 운명재판소 · 스팀 동접 버블맵 · 포트폴리오">
   <meta property="og:url" content="https://zunattang.github.io/">
   <meta property="og:image" content="https://zunattang.github.io/zuna-facecap-releases/assets/og-ko.png">
   <link rel="icon" type="image/png" sizes="32x32" href="zuna-facecap-releases/assets/favicon-32.png">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfilePage","url":"https://zunattang.github.io/","mainEntity":{"@type":"Organization","name":"ZunaTtang","url":"https://zunattang.github.io/","sameAs":["https://github.com/ZunaTtang","https://zuna.is-a.dev/"]},"hasPart":[{"@type":"MobileApplication","name":"Zuna Facecap","url":"https://zunattang.github.io/zuna-facecap-releases/","operatingSystem":"Android 10+"},{"@type":"MobileApplication","name":"운명재판소","url":"https://zunattang.github.io/games/","installUrl":"https://play.google.com/store/apps/details?id=com.zunattang.fatetribunal","operatingSystem":"Android"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfilePage","url":"https://zunattang.github.io/","mainEntity":{"@type":"Organization","name":"ZunaTtang","url":"https://zunattang.github.io/","sameAs":["https://github.com/ZunaTtang","https://zuna.is-a.dev/"]},"hasPart":[{"@type":"MobileApplication","name":"Zuna Facecap","url":"https://zunattang.github.io/zuna-facecap-releases/","operatingSystem":"Android 10+"},{"@type":"MobileApplication","name":"운명재판소","url":"https://zunattang.github.io/games/","installUrl":"https://play.google.com/store/apps/details?id=com.zunattang.fatetribunal","operatingSystem":"Android"},{"@type":"WebApplication","name":"스팀 동접 버블맵 (Steam Player Bubbles)","url":"https://steambubbles.vercel.app/","applicationCategory":"GameApplication","operatingSystem":"Web","inLanguage":["ko","en"]}]}</script>
   <script>
     // Old links to the games page (zunattang.github.io/#fate etc.) now live under /games/.
     if (["#fate", "#maker", "#top"].includes(location.hash)) location.replace("games/" + location.hash);
@@ -25,7 +25,7 @@
   <style>
     :root {
       --ink: #141110; --panel: #1f1a17; --line: rgba(240, 230, 214, .12);
-      --text: #f2e8da; --dim: #b3a595; --facecap: #e58a5c; --games: #c9a24b; --folio: #8fb8a4;
+      --text: #f2e8da; --dim: #b3a595; --facecap: #e58a5c; --games: #c9a24b; --steam: #7fa7d9; --folio: #8fb8a4;
       color-scheme: dark;
     }
     *, *::before, *::after { box-sizing: border-box; }
@@ -50,6 +50,7 @@
     .row:hover svg { transform: translateX(4px); }
     .facecap { --accent: var(--facecap); }
     .games { --accent: var(--games); }
+    .steam { --accent: var(--steam); }
     .folio { --accent: var(--folio); }
     .more { margin: 0; padding: 0 4px 24px; display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 15px; }
     .more a { color: var(--dim); text-underline-offset: 3px; }
@@ -62,7 +63,7 @@
 <body>
 <main>
   <h1>ZunaTtang</h1>
-  <p class="intro">혼자 만들고 직접 쓰는 것들. 방송용 얼굴 트래커와 AI가 판결하는 게임을 만들어요.</p>
+  <p class="intro">혼자 만들고 직접 쓰는 것들. 방송용 얼굴 트래커, AI가 판결하는 게임, 스팀 버블맵을 만들어요.</p>
   <ul>
     <li class="facecap">
       <a class="row" href="zuna-facecap-releases/ko/">
@@ -79,6 +80,14 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
       </a>
       <p class="more"><a href="https://play.google.com/store/apps/details?id=com.zunattang.fatetribunal" rel="noopener">Google Play에서 운명재판소 받기</a></p>
+    </li>
+    <li class="steam">
+      <a class="row" href="https://steambubbles.vercel.app/ko" rel="noopener">
+        <h2 class="name">스팀 동접 버블맵</h2>
+        <p class="desc">스팀 게임의 실시간 동시접속과 할인을 버블맵 하나로. 지금 뜨는 게임과 살 만한 게임을 한눈에.</p>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+      </a>
+      <p class="more"><a href="https://steambubbles.vercel.app/en" hreflang="en" lang="en" rel="noopener">English</a></p>
     </li>
     <li class="folio">
       <a class="row" href="https://zuna.is-a.dev/">
