@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>일대기 — ZunaTtang</title>
+  <meta name="description" content="2021년 10월 23일 밤 첫 커밋부터 지금까지. Git 연습에서 회사 업무 자동화, Google Play 게임, 스팀 버블맵, 안드로이드 얼굴 트래커까지 시간순으로 정리했어요.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#141110">
+  <link rel="canonical" href="https://zunattang.github.io/story/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="ZunaTtang">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:title" content="일대기 — ZunaTtang">
+  <meta property="og:description" content="첫 커밋부터 지금까지, 직접 쓴 커밋 595개.">
+  <meta property="og:url" content="https://zunattang.github.io/story/">
+  <link rel="icon" type="image/png" sizes="32x32" href="../zuna-facecap-releases/assets/favicon-32.png">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"AboutPage","name":"ZunaTtang 일대기","url":"https://zunattang.github.io/story/","inLanguage":"ko","about":{"@type":"Organization","name":"ZunaTtang","url":"https://zunattang.github.io/","sameAs":["https://github.com/ZunaTtang"]}}</script>
+  <style>
+    :root {
+      --ink: #141110; --panel: #1f1a17; --line: rgba(240, 230, 214, .12);
+      --text: #f2e8da; --dim: #b3a595; --facecap: #e58a5c; --games: #c9a24b; --steam: #7fa7d9; --folio: #8fb8a4; --tool: #c49bd6;
+      color-scheme: dark;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    ::selection { background: var(--facecap); color: var(--ink); }
+    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    body {
+      margin: 0; background: var(--ink); color: var(--text);
+      font-family: system-ui, -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif;
+      font-size: 17px; line-height: 1.7; word-break: keep-all;
+    }
+    a { color: var(--text); text-underline-offset: 3px; }
+    a:focus-visible { outline: 3px solid var(--facecap); outline-offset: 3px; border-radius: 6px; }
+    .wrap { max-width: 760px; margin: 0 auto; padding: 0 16px; }
+    .back { display: inline-flex; align-items: center; gap: 6px; margin: 32px 0 0; color: var(--dim); text-decoration: none; font-size: 15px; }
+    .back:hover { color: var(--text); }
+    .back svg { width: 16px; height: 16px; }
+    h1 { font-size: clamp(40px, 9vw, 64px); line-height: 1.1; letter-spacing: -0.03em; margin: 40px 0 16px; }
+    .lead { color: var(--dim); font-size: 19px; margin: 0 0 12px; max-width: 34em; }
+    .counts { color: var(--dim); font-size: 15px; margin: 0 0 24px; }
+    .counts b { color: var(--text); font-variant-numeric: tabular-nums; }
+    .years { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 40px; padding: 0; list-style: none; }
+    .years a { display: inline-block; padding: 4px 14px; border: 1px solid var(--line); border-radius: 999px; color: var(--dim); text-decoration: none; font-size: 15px; font-variant-numeric: tabular-nums; }
+    .years a:hover { color: var(--text); border-color: var(--dim); }
+    section.year { padding: 40px 0 8px; border-top: 1px solid var(--line); scroll-margin-top: 16px; }
+    .year > h2 { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; font-size: clamp(34px, 7vw, 48px); line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 6px; font-variant-numeric: tabular-nums; }
+    .year > h2 span { font-size: 18px; font-weight: 700; color: var(--dim); letter-spacing: 0; }
+    .year > p { color: var(--dim); margin: 0 0 28px; }
+    .events { list-style: none; margin: 0 0 32px; padding: 0 0 0 20px; border-left: 2px solid var(--line); }
+    .events li { position: relative; padding: 0 0 26px 4px; --accent: var(--dim); }
+    .events li::before { content: ""; position: absolute; left: -27px; top: 9px; width: 12px; height: 12px; border-radius: 50%; background: var(--ink); border: 2px solid var(--accent); }
+    .events li.big::before { background: var(--accent); }
+    .events li:last-child { padding-bottom: 0; }
+    .events .facecap { --accent: var(--facecap); } .events .games { --accent: var(--games); }
+    .events .steam { --accent: var(--steam); } .events .folio { --accent: var(--folio); } .events .tool { --accent: var(--tool); }
+    .when { display: block; color: var(--accent); font-weight: 700; font-size: 14px; font-variant-numeric: tabular-nums; }
+    .events h3 { margin: 0; font-size: 19px; line-height: 1.4; }
+    .events h3 a { text-decoration: none; }
+    .events h3 a:hover { color: var(--accent); text-decoration: underline; }
+    .events p { margin: 4px 0 0; color: #e0d4c6; }
+    .events .meta { color: var(--dim); font-size: 14px; }
+    .events .work { --accent: #9aa39a; }
+    .events .work h3::after { content: "회사"; margin-left: 8px; font-size: 12px; font-weight: 700; color: var(--ink); background: #9aa39a; border-radius: 999px; padding: 1px 8px; vertical-align: 2px; }
+    .legend { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; color: var(--dim); font-size: 14px; margin: 0 0 20px; }
+    .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; border: 2px solid #9aa39a; }
+    .dot.own { border-color: var(--facecap); margin-left: 8px; }
+    .now { padding: 40px 0 8px; border-top: 1px solid var(--line); }
+    .now h2 { font-size: clamp(26px, 5vw, 34px); margin: 0 0 12px; letter-spacing: -0.02em; }
+    .now p { color: var(--dim); margin: 0 0 12px; }
+    .now a { color: var(--facecap); }
+    footer { border-top: 1px solid var(--line); margin-top: 32px; padding: 40px 0 56px; color: var(--dim); font-size: 15px; }
+    .recruit { margin: 0 0 14px; color: var(--text); font-size: 17px; }
+    .recruit a { color: var(--folio); font-weight: 700; }
+    footer .small { font-size: 14px; margin: 0; }
+    footer .small a { color: var(--dim); }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M11 6l-6 6 6 6"/></svg>ZunaTtang</a>
+  <main>
+    <h1>일대기</h1>
+    <p class="lead">2021년 10월 23일 밤의 첫 커밋부터 지금까지. GitHub에 남은 기록과 회사에서 만든 자동화를 시간순으로 따라갔어요. 비공개 저장소는 공개해도 되는 만큼만 적었어요.</p>
+    <p class="counts">직접 쓴 커밋 <b>595</b>개 · 그중 <b>485</b>개가 Claude Code와 함께 · 2021–2026</p>
+    <p class="legend"><span class="dot work"></span>회사에서 만든 것 (회사 저장소라 이름과 내용은 빼고 적었어요) <span class="dot own"></span>내 프로젝트</p>
+    <ul class="years" aria-label="연도로 이동">
+      <li><a href="#y2021">2021</a></li><li><a href="#y2022">2022</a></li><li><a href="#y2024">2024</a></li><li><a href="#y2025">2025</a></li><li><a href="#y2026">2026</a></li>
+    </ul>
+
+    <section class="year" id="y2021" aria-labelledby="h2021">
+      <h2 id="h2021">2021 <span>Git을 배운 밤</span></h2>
+      <p>첫 직장에 출근하기 일주일쯤 전이었어요.</p>
+      <ol class="events">
+        <li class="folio big"><span class="when">10월 23일, 밤 9시 56분 – 11시 45분</span>
+          <h3>저장소 여섯 개로 Git 연습</h3>
+          <p>첫 커밋은 "initial commit". 두 시간 동안 커밋, <code>.gitignore</code>, SourceTree, 클론을 하나씩 해 보고, 브랜치를 만들어 그날 밤 첫 풀 리퀘스트까지 합쳤어요. 짧은 Go 연습 파일도 하나. 같은 날 GitHub 프로필 README를 처음 만들었고, 이 README는 2026년까지 계속 고쳐 써요.</p></li>
+      </ol>
+    </section>
+
+    <section class="year" id="y2022" aria-labelledby="h2022">
+      <h2 id="h2022">2022 <span>자동화를 처음 그려 보다</span></h2>
+      <p>개인 저장소에 남은 커밋은 없지만, 회사에서 처음으로 "사람이 매일 하는 일을 프로그램에 넘기자"는 기획을 썼어요.</p>
+      <ol class="events">
+        <li class="work"><span class="when">2022 · 회사</span>
+          <h3>데일리 뉴스 자동 송출 기획서</h3>
+          <p>매일 손으로 고르던 뉴스를 자동으로 모아 보내는 프로그램의 기획서. 2년 뒤 실제 봇이 됐어요.</p></li>
+      </ol>
+    </section>
+
+    <section class="year" id="y2024" aria-labelledby="h2024">
+      <h2 id="h2024">2024 <span>첫 업무 봇</span></h2>
+      <p>개인 저장소 커밋은 없는 해. 회사에서 처음으로 봇을 돌렸어요.</p>
+      <ol class="events">
+        <li class="work big"><span class="when">2024 · 회사</span>
+          <h3>업무 봇 세 개</h3>
+          <p>텔레그램 뉴스를 자동으로 만들어 올리는 봇, 매일 아침 9시에 아직 답하지 않은 문의를 정리해 주는 봇, 데일리 브리핑 봇. 2022년의 기획서가 처음으로 돌아가기 시작했어요.</p>
+          <p class="meta">텔레그램 봇 · 메신저 알림</p></li>
+      </ol>
+    </section>
+
+    <section class="year" id="y2025" aria-labelledby="h2025">
+      <h2 id="h2025">2025 <span>다시 만들기 시작</span></h2>
+      <p>회사에서 AI를 업무에 붙이기 시작했고, 연말에는 개인 프로젝트도 다시 올리기 시작했어요.</p>
+      <ol class="events">
+        <li class="work"><span class="when">2025 · 회사</span>
+          <h3>GPT 반자동 문의 응대</h3>
+          <p>영어 문의의 첫 답장을 GPT가 초안으로 쓰고 사람이 확인해 보내는 방식으로 바꿔, 첫 응답이 30분~2시간에서 5분 안쪽으로 줄었어요. 데일리 브리핑 봇은 공식 텔레그램 채널에 들어갔어요.</p></li>
+        <li class="work big"><span class="when">2025 · 회사</span>
+          <h3>거래소·지갑 자산 확인 봇</h3>
+          <p>거래소 6곳과 지갑 16개의 잔고를 매일 30분씩 손으로 확인하던 일을 봇으로 직접 만들어 넘겼어요. 매일 메신저로 자산·거래량 보고가 와요.</p>
+          <p class="meta">Google Apps Script · 메신저 봇</p></li>
+        <li class="tool big"><span class="when">12월 15–16일</span>
+          <h3><a href="https://github.com/ZunaTtang/taptosync" rel="noopener">TapToSync</a></h3>
+          <p>노래를 들으며 가사 줄마다 탭하면 숏폼 자막 타이밍이 잡히는 웹 도구. 탭이 조금 어긋나도 순서·최소 간격·줄 길이에 맞춰 자동으로 다듬고, SRT·LRC·CapCut으로 내보내요. 처음으로 AI 코딩 에이전트에게 브랜치와 PR을 맡겨 본 프로젝트예요.</p>
+          <p class="meta">Vite · React · TypeScript · Tailwind</p></li>
+      </ol>
+    </section>
+
+    <section class="year" id="y2026" aria-labelledby="h2026">
+      <h2 id="h2026">2026 <span>AI와 짝을 이뤄</span></h2>
+      <p>커밋 대부분이 이 해에 있어요. Claude Code와 함께 쓰면서 하루에 한 단계씩 끝내는 방식이 자리 잡았어요.</p>
+      <ol class="events">
+        <li class="work big"><span class="when">2월 – 8월 · 회사</span>
+          <h3>QA 자동화와 화면 감시</h3>
+          <p>브라우저로 주요 화면을 매번 다시 눌러 보는 회귀 점검, 그리고 실제 화면에 찍힌 값을 외부 기준값과 비교해 "서버는 정상인데 화면이 틀린" 상태를 잡는 감시 도구. 실제로 겪은 장애를 회귀 항목으로 넣었고, 개발자가 아닌 팀원도 쓰게 GUI로 바꿨어요. 커밋 86개.</p>
+          <p class="meta">Python · Playwright · AI 에이전트 UI 테스트 · 메신저 알림</p></li>
+        <li class="work"><span class="when">3월 – 5월 · 회사</span>
+          <h3>마케팅 채널용 시장 브리핑 봇</h3>
+          <p>새 텔레그램 채널에 매일 올라갈 시장 브리핑 봇을 기획부터 배포까지 혼자 만들었어요.</p></li>
+        <li class="tool"><span class="when">3월 27일</span>
+          <h3><a href="https://github.com/ZunaTtang/auto-screenshot-bot" rel="noopener">자동 스크린샷 봇</a></h3>
+          <p>사이트 안의 링크를 따라가며 모든 페이지를 전체 화면으로 찍어 두는 도구. 로그인 상태를 저장해 두고, 더블클릭으로 바로 실행돼요.</p>
+          <p class="meta">Python · Playwright</p></li>
+        <li class="tool"><span class="when">4월 9일</span>
+          <h3>크립토 시장 브리핑 봇</h3>
+          <p>시장 데이터를 모아 Claude가 해석을 쓰고 텔레그램으로 매일 보내는 봇. 처음으로 Claude API를 제품 안에 넣어 봤어요.</p>
+          <p class="meta">Python · Claude API · Docker</p></li>
+        <li class="work"><span class="when">5월 – 9월 · 회사</span>
+          <h3>매일 아침 문의 요약</h3>
+          <p>열려 있는 고객 문의를 우선순위별로 요약해 매일 아침 메신저에 올리는 루틴. Claude 루틴으로 시작해 클라우드 함수로 옮겼어요.</p>
+          <p class="meta">Claude 루틴 · 서버리스 함수</p></li>
+        <li class="tool"><span class="when">5월 20일 – 6월 29일</span>
+          <h3><a href="https://github.com/ZunaTtang/clientbrief" rel="noopener">ClientBrief</a></h3>
+          <p>GitHub 활동을 개발자가 아닌 사람이 읽을 주간 리포트로 바꾸고, 승인하면 메일로 보내는 SaaS 시제품. 민감한 내용은 가려서 보내요.</p>
+          <p class="meta">Next.js · Prisma·PostgreSQL · NextAuth · OpenAI · Resend</p></li>
+        <li class="games big"><span class="when">6월 10일 – 9월 4일</span>
+          <h3><a href="../games/">운명재판소</a></h3>
+          <p>황당한 위기에 물품 두 개로 살아남을 계획을 쓰면 AI 판관이 판결하는 게임. 첫날 하루에 앱·판결 서버·사건 DB를 세우고, 한 달 반 만에 Google Play에 정식 출시했어요. 커밋 80개가 모두 Claude Code와 함께.</p>
+          <p class="meta">React Native·Expo · Supabase · Gemini · OTA · AdMob — <a href="../log/">자세한 작업 기록</a></p></li>
+        <li class="tool"><span class="when">6월 16–17일</span>
+          <h3>거래소 API 점검 도구</h3>
+          <p>거래소 Open API를 하나씩 직접 불러 보고 결과를 체크리스트로 확인하는 로컬 작업대. 읽기 전용·미리보기·금액 상한 같은 안전장치를 먼저 넣었어요.</p>
+          <p class="meta">Python · 웹 GUI</p></li>
+        <li class="tool"><span class="when">6월 25일</span>
+          <h3><a href="https://github.com/ZunaTtang/ytdlp-live-gui" rel="noopener">Live Archiver</a></h3>
+          <p>유튜브 라이브 링크를 붙여 넣으면 방송 처음부터 저장하는 브라우저 GUI. 같은 날 압축, Whisper 자막, 진행 막대까지 붙였어요.</p>
+          <p class="meta">Python · yt-dlp · ffmpeg</p></li>
+        <li class="games"><span class="when">7월 10일 – 9월 3일</span>
+          <h3>커플재판소 (접음)</h3>
+          <p>운명재판소의 연애판 파생작. 새 백엔드와 파스텔 화면, 마스코트까지 만들었지만 출시하지 않고 접었어요.</p></li>
+        <li class="steam big"><span class="when">7월 14일 – 10월 28일</span>
+          <h3><a href="https://steambubbles.vercel.app/ko" rel="noopener">스팀 동접 버블맵</a></h3>
+          <p>스팀 게임 약 3,000개의 동시접속과 할인을 버블맵 하나로. 이틀 만에 라이브, 사람 손 없이 계속 도는 수집기, 한국어·영어.</p>
+          <p class="meta">Next.js · PixiJS · Neon · Vercel · QStash — <a href="../log/">자세한 작업 기록</a></p></li>
+        <li class="folio"><span class="when">7월 21일</span>
+          <h3>zunattang.github.io</h3>
+          <p>운명재판소 광고 인증 파일을 올리려고 만든 페이지가 게임 소개 페이지가 되고, 11월에는 지금의 허브가 됐어요.</p></li>
+        <li class="tool"><span class="when">8월 25일 – 9월 11일</span>
+          <h3><a href="https://github.com/ZunaTtang/stealth-arcade" rel="noopener">Stealth Arcade</a></h3>
+          <p>항상 위에 떠 있고 단축키 하나로 사라지는 반투명 텍스트 리더를 먼저 만들고, 그 숨는 기술을 그대로 써서 퍼즐 게임 네 개를 한 창에 담았어요. 단일 파일, exe로 배포.</p>
+          <p class="meta">Python · PyQt5</p></li>
+        <li class="work"><span class="when">2026 · 회사</span>
+          <h3>대회 정산 검증과 수상한 계정 탐지</h3>
+          <p>거래 대회 상금 정산을 숫자로 다시 맞춰 보는 검증과, 한 사람이 여러 계정을 쓰는 경우를 찾는 탐지를 자동으로. 검증이 1시간 안쪽으로 줄었어요.</p></li>
+        <li class="work big"><span class="when">9월 – 10월 · 회사</span>
+          <h3>확실한 것만 답하는 문의 에이전트</h3>
+          <p>지난 제보 661건을 규칙으로 정리해, 확실한 문의만 AI가 처리하고 애매하면 사람에게 넘기는(HOLD) 에이전트. 되돌릴 수 없는 답장은 코드가 한 번 더 막아요. 테스트 계정 → 초안만 → 실전 한 번 → 업무시간 외 자동 순서로 권한을 열었고, 개발팀에 문의를 넘기는 시간이 건당 10분에서 1분으로 줄었어요. 판단 방식과 유지보수 가이드는 개발 문서로 남겼어요.</p>
+          <p class="meta">Claude · MCP · Python 판정·중복 제거 · 메신저 리포트</p></li>
+        <li class="work"><span class="when">9월 – 10월 · 회사</span>
+          <h3>메일→메신저 알림, 자산 조회 프록시, 거래량 모니터</h3>
+          <p>정해 둔 발신자·키워드의 메일을 메신저로 넘기는 스크립트, 거래소 자산을 조회하는 클라우드 프록시, 토큰 거래량 모니터.</p>
+          <p class="meta">Google Apps Script · Cloud Run</p></li>
+        <li class="tool"><span class="when">10월 9–10일</span>
+          <h3><a href="https://github.com/ZunaTtang/vrchatmap" rel="noopener">VRChat 월드 벽 그림</a></h3>
+          <p>버튜버 스튜디오 월드의 벽 그림을 GitHub Pages에서 불러와, 월드를 다시 올리지 않고도 그림을 바꾸게 했어요. 관리 페이지에서 바로 교체.</p>
+          <p class="meta">GitHub Pages · GitHub API · VRChat</p></li>
+        <li class="folio"><span class="when">10월 27일 – 11월 8일</span>
+          <h3><a href="https://zuna.is-a.dev/">포트폴리오 zuna.is-a.dev</a></h3>
+          <p>5년치 업무 기록을 정리한 경력 문서와 포트폴리오 사이트를 Claude Code와 3일 만에 만들었어요. 업무 기록 정리 → 기획(독자·원칙: 실제 기록만, 내부 정보 가리기) → 시안 두 개를 디자인 스킬로 비평 → 프레임워크 없이 구현 → 데스크톱·모바일·다크 모드와 접근성 확인 → 자동 배포(내부 문서는 git 훅으로 차단) → 오픈소스 레지스트리에 PR을 보내 zuna.is-a.dev 주소 등록. 업무 로그 11,604건을 점으로 그린 캔버스 첫 화면, 페이지 전환 애니메이션, 내용은 JSON으로 분리. 숨은 오락실 페이지 "Den"도 붙였어요. 커밋 65개.</p>
+          <p class="meta">HTML·CSS·바닐라 JS · Canvas 2D · View Transitions · Vercel · is-a.dev</p></li>
+        <li class="facecap"><span class="when">11월 5일</span>
+          <h3>캐릭터 채널 본부</h3>
+          <p>버튜버 캐릭터 채널을 위한 저장소. 소개 영상 자동 제작 파이프라인, OBS 오버레이, 역할별 AI 에이전트 여덟 명을 한곳에 모았어요.</p>
+          <p class="meta">Remotion · Real-ESRGAN · OBS · Claude Code 에이전트</p></li>
+        <li class="facecap big"><span class="when">11월 6–19일</span>
+          <h3><a href="../zuna-facecap-releases/ko/">Zuna Facecap</a></h3>
+          <p>안드로이드 폰을 얼굴·몸·손 트래커로. 2주 동안 커밋 112개로 폰 앱 0.2에서 0.9.9까지, Play 내부 테스트, Warudo·VSeeFace·VNyan 지원, 4개 언어, 소개 사이트 공개.</p>
+          <p class="meta">Kotlin·MediaPipe · Unity · OBS — <a href="../log/">자세한 작업 기록</a></p></li>
+      </ol>
+    </section>
+
+    <section class="now" aria-labelledby="hnow">
+      <h2 id="hnow">지금</h2>
+      <p>Zuna Facecap을 공개 출시로 가져가는 중이에요. 세 대표 프로젝트를 어떻게 만들었는지는 <a href="../log/">작업 기록</a>에 더 자세히 있어요.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p class="recruit">같이 만들 팀원을 찾고 있어요. 경력과 연락처는 <a href="https://zuna.is-a.dev/">zuna.is-a.dev</a>에서 볼 수 있어요.</p>
+    <p class="small"><a href="https://github.com/ZunaTtang" rel="noopener">GitHub</a> · © 2026 ZunaTtang</p>
+  </footer>
+</div>
+</body>
+</html>

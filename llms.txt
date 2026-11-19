@@ -8,4 +8,5 @@
 - [운명재판소 (Fate Tribunal)](https://zunattang.github.io/games/): a comedy game where an AI judge rules on your survival plan. [Google Play](https://play.google.com/store/apps/details?id=com.zunattang.fatetribunal).
 - [스팀 동접 버블맵 (Steam Player Bubbles)](https://steambubbles.vercel.app/): web app that shows live Steam concurrent players and discounts for about 3,000 top games in one bubble map (Korean and English).
 - [How these were made (작업 기록)](https://zunattang.github.io/log/): build log of the three projects from 242 commits; one person working with Claude Code.
+- [Timeline (일대기)](https://zunattang.github.io/story/): everything built since the first commit on 2021-10-23, including work automation described without company names.
 - [Portfolio and career, looking for teammates](https://zuna.is-a.dev/)
