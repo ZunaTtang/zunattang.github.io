@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ZunaTtang Games — 운명재판소 · 커플재판소</title>
+<title>ZunaTtang Games — 운명재판소</title>
 <meta name="description" content="AI가 판결하는 코미디 게임을 만듭니다. 운명재판소 — 황당한 위기, 물품 2개, 당신의 생존 계획을 AI 판관이 심판한다.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,7 +12,6 @@
 :root{
   --ink:#120E0D; --ink2:#1C1614; --paper:#E9E1D0; --paper-dim:#9C9382;
   --gold:#C9A24B; --gold-dim:#7A6430; --red:#CE4334; --jade:#3FA67B; --line:#3A302B;
-  --pink:#FF7BA3; --pink-deep:#E85C8A; --pink-soft:#FFD9E6; --cream:#FFF5F7; --plum:#4A3640;
   --disp:'Black Han Sans',sans-serif; --body:'Gowun Dodum',sans-serif; --serif:'Nanum Myeongjo',serif; --jua:'Jua',sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
@@ -109,33 +108,6 @@ h2{font-family:var(--disp);font-size:clamp(30px,5vw,46px);font-weight:400;line-h
 .stat .num{font-family:var(--disp);font-size:40px;color:var(--gold)}
 .stat .lb{margin-top:6px;color:var(--paper-dim);font-size:12px;letter-spacing:2px}
 
-/* ─── 커플재판소 (핑크 존) ─── */
-#couple{background:var(--cream);color:var(--plum)}
-#couple .sec-eyebrow{color:var(--pink-deep)}
-#couple h2{color:var(--plum)}
-#couple .sec-desc{color:#8d7580}
-.couple-grid{display:grid;grid-template-columns:1fr 1fr;gap:34px;margin-top:44px;align-items:center}
-@media(max-width:860px){.couple-grid{grid-template-columns:1fr}}
-.hearty-stage{text-align:center;position:relative;cursor:pointer;user-select:-webkit-user-select;user-select:none}
-.hearty-stage svg{width:min(260px,60vw);filter:drop-shadow(0 14px 30px rgba(232,92,138,.25));transition:transform .25s;animation:float 3.4s ease-in-out infinite}
-@keyframes float{50%{transform:translateY(-12px)}}
-.hearty-stage:active svg{transform:scale(.94)}
-.hearty-hint{margin-top:10px;font-family:var(--jua);color:var(--pink-deep);font-size:14px}
-.fx-heart{position:absolute;font-size:22px;pointer-events:none;animation:rise 1.2s ease-out forwards}
-@keyframes rise{to{transform:translateY(-130px) scale(1.6);opacity:0}}
-.couple-card{background:#fff;border:1px solid #FFE3EC;border-radius:22px;padding:30px 26px;box-shadow:0 10px 34px rgba(232,92,138,.12)}
-.couple-card h3{font-family:var(--jua);font-size:22px;color:var(--pink-deep);font-weight:400}
-.couple-card p{margin-top:10px;color:#8d7580;font-size:14px;line-height:1.8}
-.pill{display:inline-block;background:var(--pink-soft);color:var(--pink-deep);border-radius:999px;padding:6px 14px;font-size:12px;margin:4px 4px 0 0;font-family:var(--jua)}
-.roulette-btn{margin-top:20px;width:100%;background:var(--pink);color:#fff;font-family:var(--jua);font-size:17px;border:none;border-radius:999px;
-  padding:15px;cursor:pointer;box-shadow:0 6px 20px rgba(255,123,163,.35);transition:transform .15s,box-shadow .2s}
-.roulette-btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(255,123,163,.5)}
-.roulette-btn:active{transform:scale(.97)}
-.roulette-out{margin-top:16px;text-align:center;min-height:76px}
-.roulette-out .score{font-family:var(--jua);font-size:44px;color:var(--pink-deep)}
-.roulette-out .grade{margin-top:2px;font-family:var(--jua);font-size:17px;color:var(--plum)}
-.soon{display:inline-block;font-family:var(--jua);background:var(--plum);color:#fff;border-radius:999px;padding:5px 14px;font-size:12px;margin-left:8px;vertical-align:middle}
-
 /* ─── 만든 사람 ─── */
 .maker{display:grid;grid-template-columns:1fr 1fr;gap:34px;margin-top:44px;align-items:start}
 @media(max-width:860px){.maker{grid-template-columns:1fr}}
@@ -165,7 +137,6 @@ footer .foot-seal{font-family:var(--serif);color:var(--gold-dim);font-size:15px;
   <a class="brand" href="#top"><span class="seal">運</span>ZunaTtang</a>
   <div class="links">
     <a href="#fate" data-nav>운명재판소</a>
-    <a href="#couple" data-nav>커플재판소</a>
     <a href="#maker" data-nav>만든 사람</a>
   </div>
 </nav>
@@ -226,51 +197,6 @@ footer .foot-seal{font-family:var(--serif);color:var(--gold-dim);font-size:15px;
       <div class="stat"><div class="num" data-count="7">0</div><div class="lb">장르 법정</div></div>
       <div class="stat"><div class="num" data-count="3">0</div><div class="lb">AI 판관</div></div>
       <div class="stat"><div class="num" data-count="1">0</div><div class="lb">인 개발</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── 커플재판소 ─── -->
-<section id="couple">
-  <div class="wrap">
-    <div class="rv"><div class="sec-eyebrow">NEXT · 準備中</div>
-    <h2>💘 커플재판소 <span class="soon">Coming Soon</span></h2>
-    <p class="sec-desc">이번엔 연애 차례. SNS를 달군 커플 논쟁에 당신의 대응을 쓰면 AI가 냉정하게 커플력을 채점하고,
-    실제 다툼은 양쪽 진술을 듣고 과실 비율까지 공정하게 판결합니다.</p></div>
-
-    <div class="couple-grid">
-      <div class="hearty-stage rv" id="hearty" title="눌러보세요!">
-        <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" aria-label="마스코트 하티">
-          <path d="M256 452 C 118 352, 52 252, 52 172 C 52 100, 108 48, 178 48 C 212 48, 244 66, 256 96 C 268 66, 300 48, 334 48 C 404 48, 460 100, 460 172 C 460 252, 394 352, 256 452 Z" fill="#FF7BA3" stroke="#E85C8A" stroke-width="10" stroke-linejoin="round"/>
-          <ellipse cx="150" cy="130" rx="34" ry="20" fill="#FFA9C4" transform="rotate(-24 150 130)"/>
-          <g fill="#FFFDF8" stroke="#EADFD4" stroke-width="6">
-            <circle cx="184" cy="66" r="34"/><circle cx="256" cy="50" r="38"/><circle cx="328" cy="66" r="34"/>
-            <circle cx="128" cy="108" r="22"/><circle cx="128" cy="152" r="18"/>
-            <circle cx="384" cy="108" r="22"/><circle cx="384" cy="152" r="18"/>
-          </g>
-          <circle cx="202" cy="212" r="17" fill="#4A3640"/><circle cx="208" cy="205" r="6" fill="#fff"/>
-          <circle cx="310" cy="212" r="17" fill="#4A3640"/><circle cx="316" cy="205" r="6" fill="#fff"/>
-          <ellipse cx="162" cy="258" rx="24" ry="14" fill="#FF9DBC"/><ellipse cx="350" cy="258" rx="24" ry="14" fill="#FF9DBC"/>
-          <path d="M232 252 Q 256 276 280 252" fill="none" stroke="#4A3640" stroke-width="9" stroke-linecap="round"/>
-          <g transform="rotate(28 408 316)">
-            <rect x="398" y="286" width="18" height="86" rx="9" fill="#C89B78" stroke="#A87C5C" stroke-width="5"/>
-            <rect x="374" y="252" width="66" height="44" rx="16" fill="#B98A6A" stroke="#A87C5C" stroke-width="5"/>
-          </g>
-          <path d="M372 300 Q 396 292 408 306" fill="none" stroke="#E85C8A" stroke-width="14" stroke-linecap="round"/>
-        </svg>
-        <div class="hearty-hint">판사 하티 · 꾹 눌러서 하트 주기</div>
-      </div>
-
-      <div class="couple-card rv">
-        <h3>커플력 고사, 미리 운세만 살짝</h3>
-        <p>출시 전이지만 오늘의 커플력은 뽑아볼 수 있게 해뒀어요. 결과는 어디까지나 하티의 기분입니다.</p>
-        <div>
-          <span class="pill">📱 연락/SNS</span><span class="pill">🙅 이성친구</span><span class="pill">💸 데이트 비용</span>
-          <span class="pill">🎂 기념일</span><span class="pill">💍 결혼/미래</span>
-        </div>
-        <button class="roulette-btn" id="rouletteBtn">💘 오늘의 커플력 뽑기</button>
-        <div class="roulette-out" id="rouletteOut"></div>
-      </div>
     </div>
   </div>
 </section>
@@ -355,7 +281,7 @@ var navIO = new IntersectionObserver(function(es){ es.forEach(function(e){
   if(e.isIntersecting) document.querySelectorAll('[data-nav]').forEach(function(a){
     a.classList.toggle('on', a.getAttribute('href') === '#'+e.target.id); });
 }); }, {rootMargin:'-40% 0px -55% 0px'});
-['fate','couple','maker'].forEach(function(id){ navIO.observe(document.getElementById(id)); });
+['fate','maker'].forEach(function(id){ navIO.observe(document.getElementById(id)); });
 
 /* ─── 카운터 ─── */
 var cntIO = new IntersectionObserver(function(es){ es.forEach(function(e){
@@ -422,33 +348,6 @@ document.getElementById('dmJudge').addEventListener('click', function(){
   document.getElementById('dmResult').classList.add('show');
 });
 document.getElementById('dmRetry').addEventListener('click', dealCase);
-
-/* ─── 하티: 하트 뿜기 ─── */
-document.getElementById('hearty').addEventListener('click', function(e){
-  var r=this.getBoundingClientRect(), self=this;
-  for(var i=0;i<6;i++){
-    var h=document.createElement('span'); h.className='fx-heart';
-    h.textContent=['💖','💗','💘','💕'][i%4];
-    h.style.left=(e.clientX-r.left+(Math.random()*60-30))+'px';
-    h.style.top=(e.clientY-r.top-10)+'px';
-    h.style.animationDelay=(i*0.06)+'s';
-    self.appendChild(h);
-    (function(el){ setTimeout(function(){ el.remove(); },1400); })(h);
-  }
-});
-
-/* ─── 커플력 룰렛 ─── */
-var GRADES=[[95,'💍 결혼각 — 오늘 프로포즈해도 됩니다'],[80,'💖 꿀커플 — 이 기세 유지'],[60,'🌱 존버 — 성장 중인 사랑'],[40,'🌧 소나기 — 오늘은 말조심'],[0,'💔 파국 주의 — 하티가 걱정합니다']];
-document.getElementById('rouletteBtn').addEventListener('click', function(){
-  var out=document.getElementById('rouletteOut'), t0=performance.now();
-  (function spin(t){
-    var k=(t-t0)/900;
-    if(k<1){ out.innerHTML='<div class="score">'+Math.floor(Math.random()*101)+'점</div><div class="grade">두구두구…</div>'; requestAnimationFrame(spin); }
-    else{ var s=Math.floor(Math.random()*101);
-      var g; for(var i=0;i<GRADES.length;i++){ if(s>=GRADES[i][0]){ g=GRADES[i][1]; break; } }
-      out.innerHTML='<div class="score">'+s+'점</div><div class="grade">'+g+'</div>'; }
-  })(t0);
-});
 
 /* ─── 메일 복사 ─── */
 document.getElementById('copyMail').addEventListener('click', function(){
